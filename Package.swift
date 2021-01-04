@@ -14,7 +14,11 @@ let package = Package(
             name: "BrandiUtility",
             targets: ["BrandiUtility"]),
     ],
-    dependencies: [],
+    dependencies: [
+        // Dependencies declare other packages that this package depends on.
+        .package(name: "Realm", url: "https://github.com/realm/realm-cocoa", from: "10.5.0"),
+        .package(name: "SDWebImage", url: "https://github.com/SDWebImage/SDWebImage", from: "5.8.2"),
+    ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
@@ -27,16 +31,3 @@ let package = Package(
             dependencies: ["BrandiUtility"]),
     ]
 )
-
-if ProcessInfo.processInfo.environment["SWIFTCI_USE_LOCAL_DEPS"] == nil {
-    package.dependencies += [
-        .package(name: "Realm", url: "https://github.com/realm/realm-cocoa", from: "10.5.0"),
-        .package(name: "SDWebImage", url: "https://github.com/SDWebImage/SDWebImage", from: "5.10.2"),
-    ]
-} else {
-    package.dependencies += [
-        .package(path: "../Realm"),
-        .package(path: "../RealmDatabase"),
-        .package(path: "../SDWebImage"),
-    ]
-}
