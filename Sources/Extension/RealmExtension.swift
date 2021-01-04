@@ -5,7 +5,7 @@
 //  Created by Joongwon Kim on 2020/08/25.
 //  Copyright © 2020 Brandi. All rights reserved.
 //
-
+/*
 import RealmSwift
 
 public extension Realm {
@@ -39,3 +39,4 @@ public extension Realm {
         }
     }
 }
+*/
