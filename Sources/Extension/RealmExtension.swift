@@ -6,7 +6,7 @@
 //  Copyright © 2020 Brandi. All rights reserved.
 //
 
-import RealmSwift
+import Realm.RealmSwift
 
 public extension Realm {
     static var current: Realm? {
