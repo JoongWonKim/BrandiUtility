@@ -6,6 +6,9 @@
 //  Copyright © 2017년 Brandi. All rights reserved.
 //
 
+import Foundation
+import UIKit
+
 var expressions = [String: NSRegularExpression]()
 
 public extension String {
