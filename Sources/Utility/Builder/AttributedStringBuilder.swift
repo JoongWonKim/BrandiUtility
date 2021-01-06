@@ -100,6 +100,8 @@ open class AttStrBuilder {
 open class ParaStyleBuilder {
     private let paraStyle = NSMutableParagraphStyle()
     
+    public init() {}
+    
     open func minLineHeight(_ height: CGFloat) -> ParaStyleBuilder {
         paraStyle.minimumLineHeight = height
         return self
