@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UISwitch {
+public extension UISwitch {
     func set(width: CGFloat, height: CGFloat) {
         let standardHeight: CGFloat = 31
         let standardWidth: CGFloat = 51
