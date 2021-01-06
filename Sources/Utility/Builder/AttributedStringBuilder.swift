@@ -34,7 +34,7 @@ open class AttStrBuilder {
     }
     
     open func append(_ character: Character,
-                attributes: Attributes) -> AttStrBuilder {
+                     attributes: Attributes) -> AttStrBuilder {
         let addedString = NSAttributedString(string: String(character), attributes: attributes)
         
         attrString.append(addedString)
@@ -58,7 +58,7 @@ open class AttStrBuilder {
             }
             return self
         } catch {
-//            BRFirebaseCrashlytics.writeCrashLog(string: "\(#function):: regex error")
+            //            BRFirebaseCrashlytics.writeCrashLog(string: "\(#function):: regex error")
             return self
         }
     }
@@ -80,6 +80,11 @@ open class AttStrBuilder {
     
     open func underline() -> AttStrBuilder {
         attrString.addAttributes([.underlineStyle: NSUnderlineStyle.single.rawValue], range: NSRange(location: 0, length: attrString.string.count))
+        return self
+    }
+    
+    func underlineColor(_ color: UIColor) -> AttStrBuilder {
+        attrString.addAttributes([.underlineColor: color], range: NSRange(location: 0, length: attrString.string.count))
         return self
     }
     
