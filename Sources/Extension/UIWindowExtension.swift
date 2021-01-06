@@ -1,5 +1,5 @@
 //
-//  UIWindowExtend.swift
+//  UIWindowExtension.swift
 //  Brandi
 //
 //  Created by Ryan on 2016. 4. 7..
