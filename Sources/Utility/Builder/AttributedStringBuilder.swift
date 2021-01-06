@@ -83,7 +83,7 @@ open class AttStrBuilder {
         return self
     }
     
-    func underlineColor(_ color: UIColor) -> AttStrBuilder {
+    open func underlineColor(_ color: UIColor) -> AttStrBuilder {
         attrString.addAttributes([.underlineColor: color], range: NSRange(location: 0, length: attrString.string.count))
         return self
     }
