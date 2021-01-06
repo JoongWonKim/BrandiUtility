@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-extension Int {
+public extension Int {
     func decimalFormatted() -> String {
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = NumberFormatter.Style.decimal
