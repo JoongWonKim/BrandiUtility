@@ -25,7 +25,7 @@ public extension NSMutableAttributedString {
 }
 
 open class AttStrBuilder {
-    typealias Attributes = [NSAttributedString.Key: Any]
+    public typealias Attributes = [NSAttributedString.Key: Any]
     
     private var attrString: NSMutableAttributedString
     
