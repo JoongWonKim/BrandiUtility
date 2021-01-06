@@ -37,7 +37,7 @@ public extension UIImageView {
                 )
             }
         } else {
-            BrandiLog.errorLog("There is no valid image url")
+            Logger.errorLog("There is no valid image url")
 //            BRFirebaseCrashlytics.writeCrashLog(string: "\(#function):: There is no valid image url")
         }
     }

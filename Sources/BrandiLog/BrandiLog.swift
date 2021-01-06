@@ -1,6 +1,6 @@
 //
-//  BrandiLog.swift
-//  BrandiLog
+//  Logger.swift
+//  Logger
 //
 //  Created by Ryan Lee on 29/06/2018.
 //  Copyright © 2018 Brandi. All rights reserved.
@@ -8,7 +8,9 @@
 
 import Foundation
 
-open class BrandiLog {
+open class Logger {
+    
+    public static var logName: String = ""
     
     /// 디버그모드 선언. 로그를 출력하고자 하는 경우 true, 로그를 출력하지 않고자 하는 경우 false로 지정
     private static var isDebugMode: Bool = true
@@ -21,16 +23,26 @@ open class BrandiLog {
      - WARNING: 경고 레벨
      - ERROR:   에러 레벨
      */
-    public enum LOG_LEVEL: String {
-        case VERBOSE = "###_BRANDI_LOG_###"
-        case INFO = "###_BRANDI_INFO_###"
-        case WARNING = "###_BRANDI_WARNING_###"
-        case ERROR = "###_BRANDI_ERROR_###"
-        case RAW = "###_BRANDI_RAW_OBJECT_###"
+    public enum LogLevel {
+        case verbose
+        case info
+        case warning
+        case error
+        case raw
+        
+        var name: String {
+            switch self {
+            case .verbose: return "###_\(Logger.logName)_LOG_###"
+            case .info: return "###_\(Logger.logName)_INFO_###"
+            case .warning: return "###_\(Logger.logName)_WARNING_###"
+            case .error: return "###_\(Logger.logName)_ERROR_###"
+            case .raw: return "###_\(Logger.logName)_RAW_OBJECT_###"
+            }
+        }
     }
     
-    public static let STRING_LOG_EMPTYSPACE = " "
-    public static let STRING_LOG_TAG_MESSAGE = "MESSAGE:"
+    public static let stringLogEmptySpace = " "
+    public static let stringLogTagMessage = "MESSAGE:"
     
     public static func setDebugMode(_ isDebugMode: Bool) {
         self.isDebugMode = isDebugMode
@@ -42,7 +54,7 @@ open class BrandiLog {
      - parameter logString: 로그내용
      */
     public static func verboseLog(_ logString: String) {
-        let verboseLogString: String = String(LOG_LEVEL.VERBOSE.rawValue) + makeLogString(logString)
+        let verboseLogString: String = LogLevel.verbose.name + makeLogString(logString)
         self.printLog(verboseLogString)
     }
     
@@ -52,7 +64,7 @@ open class BrandiLog {
      - parameter logString: 로그내용
      */
     public static func infoLog(_ logString: String) {
-        let infoLogString: String = String(LOG_LEVEL.INFO.rawValue) + makeLogString(logString)
+        let infoLogString: String = LogLevel.info.name + makeLogString(logString)
         self.printLog(infoLogString)
     }
     
@@ -62,7 +74,7 @@ open class BrandiLog {
      - parameter logString: 로그내용
      */
     public static func warningLog(_ logString: String) {
-        let warningLogString: String = String(LOG_LEVEL.WARNING.rawValue) + makeLogString(logString)
+        let warningLogString: String = LogLevel.warning.name + makeLogString(logString)
         self.printLog(warningLogString)
     }
     
@@ -72,7 +84,7 @@ open class BrandiLog {
      - parameter logString: 로그내용
      */
     public static func errorLog(_ logString: String) {
-        let errorLogString: String = String(LOG_LEVEL.ERROR.rawValue) + makeLogString(logString)
+        let errorLogString: String = LogLevel.error.name + makeLogString(logString)
         self.printLog(errorLogString)
     }
     
@@ -85,7 +97,7 @@ open class BrandiLog {
      - parameter line:         에러가 발생한 코드 라인 ( __LINE__ || #line)
      */
     public static func errorLogWithLocation(_ logString: String, fileName: String, functionName: String, line: Int) {
-        let errorLogString: String = String(LOG_LEVEL.ERROR.rawValue) + makeLogString(logString) + "@@FUNCTION: \(functionName), @@LINE: \(line), @@FILE: \(fileName)"
+        let errorLogString: String = LogLevel.error.name + makeLogString(logString) + "@@FUNCTION: \(functionName), @@LINE: \(line), @@FILE: \(fileName)"
         self.printLog(errorLogString)
     }
     
@@ -95,18 +107,18 @@ open class BrandiLog {
      - parameter logLevel:  로그레벨 (LOG_LEVEL)
      - parameter logString: 로그내용
      */
-    public static func printLog(_ logLevel: LOG_LEVEL, logString: String) {
+    public static func printLog(_ logLevel: LogLevel, logString: String) {
         if self.isDebugMode {
             switch logLevel {
-            case .VERBOSE:
+            case .verbose:
                 verboseLog(logString)
-            case .INFO:
+            case .info:
                 infoLog(logString)
-            case .WARNING:
+            case .warning:
                 warningLog(logString)
-            case .ERROR:
+            case .error:
                 errorLog(logString)
-            case .RAW:
+            case .raw:
                 infoLog(logString)
             }
         }
@@ -120,7 +132,7 @@ open class BrandiLog {
      - returns: 조합된 로그 String
      */
     private static func makeLogString(_ logString: String) -> String {
-        let log: String = STRING_LOG_EMPTYSPACE + STRING_LOG_TAG_MESSAGE + STRING_LOG_EMPTYSPACE + logString + STRING_LOG_EMPTYSPACE
+        let log: String = stringLogEmptySpace + stringLogTagMessage + stringLogEmptySpace + logString + stringLogEmptySpace
         return log
     }
     

@@ -42,10 +42,10 @@ open class SystemUtility {
         var ver: String = "0"
         if let version = Bundle.main.infoDictionary?[String(kCFBundleVersionKey)] as? String {
             ver = version
-            BrandiLog.infoLog("Brandi iOS version is: \(ver)")
+            Logger.infoLog("Brandi iOS version is: \(ver)")
 //            BRFirebaseCrashlytics.writeCrashLog(string: "\(#function):: Brandi iOS version is: \(ver)")
         } else {
-            BrandiLog.infoLog("An Error Occurered within getting app version process")
+            Logger.infoLog("An Error Occurered within getting app version process")
 //            BRFirebaseCrashlytics.writeCrashLog(string: "\(#function):: An Error Occurered within getting app version process")
         }
         return ver
@@ -55,10 +55,10 @@ open class SystemUtility {
         var ver: String = "0.0.0"
         if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
             ver = version
-            BrandiLog.infoLog("Brandi iOS version is: \(ver)")
+            Logger.infoLog("Brandi iOS version is: \(ver)")
 //            BRFirebaseCrashlytics.writeCrashLog(string: "\(#function):: Brandi iOS version is: \(ver)")
         } else {
-            BrandiLog.infoLog("An Error Occurered within getting app version process")
+            Logger.infoLog("An Error Occurered within getting app version process")
 //            BRFirebaseCrashlytics.writeCrashLog(string: "\(#function):: An Error Occurered within getting app version process")
         }
         return ver
@@ -82,31 +82,31 @@ open class SystemUtility {
     public static func getDeviceType() -> DeviceType {
         let height = UIScreen.main.bounds.height
         if height < DeviceType.iPhone5.rawValue {
-            BrandiLog.infoLog("IPHONE_4")
+            Logger.infoLog("IPHONE_4")
             return .iPhone4
         } else if height == DeviceType.iPhone5.rawValue {
-            BrandiLog.infoLog("IPHONE_5")
+            Logger.infoLog("IPHONE_5")
             return .iPhone5
         } else if height == DeviceType.iPhone6.rawValue {
-            BrandiLog.infoLog("IPHONE_6")
+            Logger.infoLog("IPHONE_6")
             return .iPhone6
         } else if height == DeviceType.iPhone6P.rawValue {
-            BrandiLog.infoLog("IPHONE_6P")
+            Logger.infoLog("IPHONE_6P")
             return .iPhone6P
         } else if height == DeviceType.iPhoneX.rawValue {
-            BrandiLog.infoLog("IPHONE_X")
+            Logger.infoLog("IPHONE_X")
             return .iPhoneX
         } else if height == DeviceType.iPhone12.rawValue {
-            BrandiLog.infoLog("IPHONE_12")
+            Logger.infoLog("IPHONE_12")
             return .iPhone12
         } else if height == DeviceType.iPhoneXSM.rawValue {
-            BrandiLog.infoLog("IPHONE_XSM")
+            Logger.infoLog("IPHONE_XSM")
             return .iPhoneXSM
         } else if height == DeviceType.iPhone12M.rawValue {
-            BrandiLog.infoLog("IPHONE_12M")
+            Logger.infoLog("IPHONE_12M")
             return .iPhone12M
         } else {
-            BrandiLog.infoLog("IOS_DEVICE_TYPE_NOT_REQUIRED")
+            Logger.infoLog("IOS_DEVICE_TYPE_NOT_REQUIRED")
             return .notRecognized
         }
     }
@@ -166,7 +166,7 @@ open class SystemUtility {
         if !self.keySet.contains(key) {
             self.keySet.append(key)
         }
-        BrandiLog.infoLog("saved Title: \(String(describing: title))")
+        Logger.infoLog("saved Title: \(String(describing: title))")
     }
     
     static func loadStatusOf(_ viewController: SuperViewController) {
@@ -181,7 +181,7 @@ open class SystemUtility {
         }
         viewController.haveToRefresh = (refresh != nil) ? refresh! : false
         viewController.refreshForLogin = (loginRefresh != nil) ? loginRefresh! : false
-        BrandiLog.infoLog("loaded Title: \(String(describing: title))")
+        Logger.infoLog("loaded Title: \(String(describing: title))")
     }
     
     static func refreshAllViewControllers() {
