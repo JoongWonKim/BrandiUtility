@@ -12,15 +12,15 @@ import SDWebImage
 public extension UIImageView {
     // Varia
     // image load wrapper function
-    func setImageWithUrl(_ urlString: String?, placeholderImage: UIImage? = nil) {
-        self.setImageWithUrl(urlString, placeholderImage: placeholderImage, completion: nil)
+    func br_setImageWithUrl(_ urlString: String?, placeholderImage: UIImage? = nil) {
+        self.br_setImageWithUrl(urlString, placeholderImage: placeholderImage, completion: nil)
     }
     
-    func setImageWithUrl(_ urlString: String?, placeholderImage: UIImage? = nil, completion: ((_ image: UIImage, _ url: URL) -> Void)?) {
-        self.setImageWithUrlWithOptions(urlString, placeholderImage: placeholderImage, options: [], completion: completion)
+    func br_setImageWithUrl(_ urlString: String?, placeholderImage: UIImage? = nil, completion: ((_ image: UIImage, _ url: URL) -> Void)?) {
+        self.br_setImageWithUrlWithOptions(urlString, placeholderImage: placeholderImage, options: [], completion: completion)
     }
     
-    func setImageWithUrlWithOptions(_ urlString: String?, placeholderImage: UIImage? = nil, options: SDWebImageOptions, completion: ((_ image: UIImage, _ url: URL) -> Void)?) {
+    func br_setImageWithUrlWithOptions(_ urlString: String?, placeholderImage: UIImage? = nil, options: SDWebImageOptions, completion: ((_ image: UIImage, _ url: URL) -> Void)?) {
         self.image = nil
         if urlString != nil && urlString!.count > 0 && (urlString!.hasPrefix("http") || (urlString!.hasPrefix("file"))) {
             let url = URL(string: urlString!)
