@@ -10,7 +10,8 @@ import Foundation
 
 open class Logger {
     
-    public static var logName: String = ""
+    /// 출력되는 접두사 이름
+    private static var logName: String = ""
     
     /// 디버그모드 선언. 로그를 출력하고자 하는 경우 true, 로그를 출력하지 않고자 하는 경우 false로 지정
     private static var isDebugMode: Bool = true
@@ -43,6 +44,10 @@ open class Logger {
     
     public static let stringLogEmptySpace = " "
     public static let stringLogTagMessage = "MESSAGE:"
+    
+    public static func setLogName(_ logName: String) {
+        self.logName = logName
+    }
     
     public static func setDebugMode(_ isDebugMode: Bool) {
         self.isDebugMode = isDebugMode
