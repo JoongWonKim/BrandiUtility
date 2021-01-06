@@ -29,7 +29,7 @@ open class AttStrBuilder {
     
     private var attrString: NSMutableAttributedString
     
-    init(text: String = "") {
+    public init(text: String = "") {
         self.attrString = NSMutableAttributedString(string: text)
     }
     
