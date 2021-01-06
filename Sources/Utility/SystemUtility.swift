@@ -35,10 +35,10 @@ open class SystemUtility {
     private static var loginRefreshSet: [NSValue: Bool] = [ : ]
     
     // MARK: Constants
-    static let DURATION_ANIMATION: TimeInterval = 0.3
+    public static let DURATION_ANIMATION: TimeInterval = 0.3
     
     // MARK: System Status Functions
-    static func getBrandiBuildVersion() -> String {
+    public static func getBrandiBuildVersion() -> String {
         var ver: String = "0"
         if let version = Bundle.main.infoDictionary?[String(kCFBundleVersionKey)] as? String {
             ver = version
@@ -51,7 +51,7 @@ open class SystemUtility {
         return ver
     }
     
-    static func getBrandiVersionCode() -> String {
+    public static func getBrandiVersionCode() -> String {
         var ver: String = "0.0.0"
         if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
             ver = version
@@ -64,7 +64,7 @@ open class SystemUtility {
         return ver
     }
     
-    static func getLocale() -> LocaleType {
+    public static func getLocale() -> LocaleType {
         guard let language = Locale.preferredLanguages.first else { return LocaleType.kor }
         if language.contains(LocaleType.kor.rawValue) {
             return LocaleType.kor
@@ -75,11 +75,11 @@ open class SystemUtility {
         }
     }
     
-    static func screenSizeRect() -> CGRect {
+    public static func screenSizeRect() -> CGRect {
         return UIScreen.main.bounds
     }
     
-    static func getDeviceType() -> DeviceType {
+    public static func getDeviceType() -> DeviceType {
         let height = UIScreen.main.bounds.height
         if height < DeviceType.iPhone5.rawValue {
             BrandiLog.infoLog("IPHONE_4")
@@ -111,7 +111,7 @@ open class SystemUtility {
         }
     }
     
-    static func getDeviceNameInDetail() -> String {
+    public static func getDeviceNameInDetail() -> String {
         var modelName: String {
             var systemInfo = utsname()
             uname(&systemInfo)
@@ -197,7 +197,7 @@ open class SystemUtility {
     }*/
     
     // MARK: System Management Functions
-    static func startDelayedTask(_ duration: Double, taskBlock: @escaping (() -> Void)) {
+    public static func startDelayedTask(_ duration: Double, taskBlock: @escaping (() -> Void)) {
         let delay = duration * Double(NSEC_PER_SEC)
         let time = DispatchTime.now() + Double(Int64(delay)) / Double(NSEC_PER_SEC)
         DispatchQueue.main.asyncAfter(deadline: time,
@@ -207,7 +207,7 @@ open class SystemUtility {
         )
     }
     
-    static func setApplicationBadgeNumber(_ number: Int) {
+    public static func setApplicationBadgeNumber(_ number: Int) {
         UIApplication.shared.applicationIconBadgeNumber = number
     }
     /*
@@ -239,7 +239,7 @@ open class SystemUtility {
         CoreDataStore.removeSession(completion: nil)
     }*/
     
-    static func getTopWindow() -> UIWindow? {
+    public static func getTopWindow() -> UIWindow? {
         if let window = UIApplication.shared.delegate?.window {
             return window
         } else {
@@ -247,7 +247,7 @@ open class SystemUtility {
         }
     }
     
-    static func getTopViewController() -> UIViewController? {
+    public static func getTopViewController() -> UIViewController? {
         if let baseController = UIApplication.shared.delegate?.window??.visibleViewController {            
             if baseController.isKind(of: UITabBarController.self) {
                 // navigationController의 CurrentViewController를 리턴
@@ -423,13 +423,13 @@ open class SystemUtility {
         }
     }*/
     
-    static func killApplicationImmediately() {
+    public static func killApplicationImmediately() {
         exit(0)
     }
     
-    @objc private static func closeApplication(_ sender: UITapGestureRecognizer) {
-        exit(0)
-    }
+//    @objc private static func closeApplication(_ sender: UITapGestureRecognizer) {
+//        exit(0)
+//    }
 
     /*
     private static var isInDisplay: Bool = false //디스플레이중인지 판별
@@ -589,7 +589,7 @@ open class SystemUtility {
     
     // MARK: Blurry Fullscreen Page Functions
     private static var viewBlurry: UIView?
-    static func showBlurryViewOnTopWindow() {
+    public static func showBlurryViewOnTopWindow() {
         if let rootWindow = UIApplication.shared.keyWindow {
             if self.viewBlurry == nil {
                 self.viewBlurry = GUIUtility.getBlurEffectView()
@@ -614,7 +614,7 @@ open class SystemUtility {
         }
     }
     
-    static func hideBlurryViewFromTopWindow(_ completionHandler: ((Bool) -> Void)?) {
+    public static func hideBlurryViewFromTopWindow(_ completionHandler: ((Bool) -> Void)?) {
         if let blurry = self.viewBlurry {
             UIView.animate(withDuration: self.DURATION_ANIMATION, animations:
                 {
@@ -702,7 +702,7 @@ open class SystemUtility {
     
     private static var globalWKWebView: WKWebView?
     
-    static func getGlobalWKWebView(_ frame: CGRect) -> WKWebView {
+    public static func getGlobalWKWebView(_ frame: CGRect) -> WKWebView {
         self.globalWKWebView?.removeFromSuperview()
         if self.globalWKWebView == nil {
             let config = WKWebViewConfiguration()
@@ -715,15 +715,15 @@ open class SystemUtility {
         return self.globalWKWebView!
     }
     
-    static func setGlobalWKWebViewReleased() {
+    public static func setGlobalWKWebViewReleased() {
         self.globalWKWebView = nil
     }
     
-    static func isGlobalWKWebViewNil() -> Bool {
+    public static func isGlobalWKWebViewNil() -> Bool {
         return (self.globalWKWebView == nil) ? true : false
     }
     
-    static func saveV2Popup(_ needed: Bool, title: String, content: String) {
+    public static func saveV2Popup(_ needed: Bool, title: String, content: String) {
         self.v2PopupNeeded = needed
         self.v2PopupTitle = title
         self.v2PopupContent = content
@@ -732,7 +732,7 @@ open class SystemUtility {
     private static var v2PopupNeeded = false
     private static var v2PopupTitle: String?
     private static var v2PopupContent: String?
-    static func getV2Popup() -> (title: String, content: String)? {
+    public static func getV2Popup() -> (title: String, content: String)? {
         if self.v2PopupNeeded && self.v2PopupTitle != nil && self.v2PopupContent != nil {
             self.v2PopupNeeded = false
             return (title: self.v2PopupTitle!, content: self.v2PopupContent!)
@@ -742,7 +742,7 @@ open class SystemUtility {
     }
     
     private static var alertPushPopupNeeded = false
-    static func getAlertPushPopup() -> Bool {
+    public static func getAlertPushPopup() -> Bool {
         if self.alertPushPopupNeeded {
 //            self.alertPushPopupNeeded = false
             return true
@@ -751,7 +751,7 @@ open class SystemUtility {
         }
     }
     
-    static func setAlertPushPopup(_ alertPushPopupNeeded: Bool) {
+    public static func setAlertPushPopup(_ alertPushPopupNeeded: Bool) {
         self.alertPushPopupNeeded = alertPushPopupNeeded
     }
     

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 open class AnimationUtility {
-    static func startFadeInTransition(_ viewToFadeIn: UIView, animDuration: TimeInterval?) {
+    public static func startFadeInTransition(_ viewToFadeIn: UIView, animDuration: TimeInterval?) {
         var duration: TimeInterval = 0
         if animDuration == nil || animDuration == 0 {
             duration = 0.3
@@ -24,7 +24,7 @@ open class AnimationUtility {
         UIView.commitAnimations()
     }
     
-    static func startFadeOutTransition(_ viewToFadeOut: UIView, animDuration: TimeInterval?) {
+    public static func startFadeOutTransition(_ viewToFadeOut: UIView, animDuration: TimeInterval?) {
         var duration: TimeInterval = 0
         if animDuration == nil || animDuration == 0 {
             duration = 0.3
