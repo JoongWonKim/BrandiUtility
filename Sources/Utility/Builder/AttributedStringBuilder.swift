@@ -33,7 +33,7 @@ open class AttStrBuilder {
         self.attrString = NSMutableAttributedString(string: text)
     }
     
-    func append(_ character: Character,
+    open func append(_ character: Character,
                 attributes: Attributes) -> AttStrBuilder {
         let addedString = NSAttributedString(string: String(character), attributes: attributes)
         
@@ -41,12 +41,12 @@ open class AttStrBuilder {
         return self
     }
     
-    func append(_ builder: AttStrBuilder) -> AttStrBuilder {
+    open func append(_ builder: AttStrBuilder) -> AttStrBuilder {
         attrString.append(builder.build())
         return self
     }
     
-    func replace(_ attributedString: NSAttributedString) -> AttStrBuilder {
+    open func replace(_ attributedString: NSAttributedString) -> AttStrBuilder {
         do {
             let matches = try NSRegularExpression(pattern: attributedString.string, options: .caseInsensitive).matches(
                 in: self.attrString.string,
@@ -63,36 +63,36 @@ open class AttStrBuilder {
         }
     }
     
-    func font(_ font: FontWeightType) -> AttStrBuilder {
+    open func font(_ font: FontWeightType) -> AttStrBuilder {
         attrString.addAttributes([.font: font.font()], range: NSRange(location: 0, length: attrString.string.count))
         return self
     }
     
-    func color(_ color: UIColor) -> AttStrBuilder {
+    open func color(_ color: UIColor) -> AttStrBuilder {
         attrString.addAttributes([.foregroundColor: color], range: NSRange(location: 0, length: attrString.string.count))
         return self
     }
     
-    func link(_ url: String) -> AttStrBuilder {
+    open func link(_ url: String) -> AttStrBuilder {
         attrString.addAttributes([.link: url], range: NSRange(location: 0, length: attrString.string.count))
         return self
     }
     
-    func underline() -> AttStrBuilder {
+    open func underline() -> AttStrBuilder {
         attrString.addAttributes([.underlineStyle: NSUnderlineStyle.single.rawValue], range: NSRange(location: 0, length: attrString.string.count))
         return self
     }
     
-    func paraStyle(_ paraStyle: NSMutableParagraphStyle) -> AttStrBuilder {
+    open func paraStyle(_ paraStyle: NSMutableParagraphStyle) -> AttStrBuilder {
         attrString.addAttributes([.paragraphStyle: paraStyle], range: NSRange(location: 0, length: attrString.string.count))
         return self
     }
     
-    func build() -> NSAttributedString {
+    open func build() -> NSAttributedString {
         return attrString
     }
     
-    func mutableBuild() -> NSMutableAttributedString {
+    open func mutableBuild() -> NSMutableAttributedString {
         return attrString
     }
 }
@@ -100,22 +100,22 @@ open class AttStrBuilder {
 open class ParaStyleBuilder {
     private let paraStyle = NSMutableParagraphStyle()
     
-    func minLineHeight(_ height: CGFloat) -> ParaStyleBuilder {
+    open func minLineHeight(_ height: CGFloat) -> ParaStyleBuilder {
         paraStyle.minimumLineHeight = height
         return self
     }
     
-    func lineSpacing(_ lineSpacing: CGFloat) -> ParaStyleBuilder {
+    open func lineSpacing(_ lineSpacing: CGFloat) -> ParaStyleBuilder {
         paraStyle.lineSpacing = lineSpacing
         return self
     }
     
-    func textAlign(_ align: NSTextAlignment) -> ParaStyleBuilder {
+    open func textAlign(_ align: NSTextAlignment) -> ParaStyleBuilder {
         paraStyle.alignment = align
         return self
     }
     
-    func build() -> NSMutableParagraphStyle {
+    open func build() -> NSMutableParagraphStyle {
         return paraStyle
     }
 }

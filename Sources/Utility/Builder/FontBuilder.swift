@@ -19,7 +19,7 @@ public enum FontWeightType {
     case heavy(CGFloat)
     case black(CGFloat)
     
-    func font() -> UIFont {
+    public func font() -> UIFont {
         var fontSize: CGFloat = 12
         var fontWeight: UIFont.Weight = .regular
         
