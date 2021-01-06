@@ -17,7 +17,7 @@ open class GUIUtility {
         return image
     }*/
     
-    static func imageWithColor(_ color: UIColor, size: CGSize) -> UIImage {
+    public static func imageWithColor(_ color: UIColor, size: CGSize) -> UIImage {
         let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
         color.setFill()
@@ -30,11 +30,11 @@ open class GUIUtility {
         }
     }
     
-    static func imageWithColorRounded(_ color: UIColor, size: CGSize) -> UIImage {
+    public static func imageWithColorRounded(_ color: UIColor, size: CGSize) -> UIImage {
         return self.imageWithColorRoundedWithRadius(color, size: size, radius: 3)
     }
     
-    static func imageWithColorRoundedWithRadius(_ color: UIColor, size: CGSize, radius: CGFloat) -> UIImage {
+    public static func imageWithColorRoundedWithRadius(_ color: UIColor, size: CGSize, radius: CGFloat) -> UIImage {
         let image = self.imageWithColor(color, size: size)
         UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
         UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: size.width, height: size.height), cornerRadius: radius).addClip()
@@ -47,11 +47,11 @@ open class GUIUtility {
         }
     }
     
-    static func addBlurEffectInto(_ view: UIView) {
+    public static func addBlurEffectInto(_ view: UIView) {
         self.addBlurEffectInto(view, style: .light)
     }
     
-    static func addBlurEffectInto(_ view: UIView, style: UIBlurEffect.Style) {
+    public static func addBlurEffectInto(_ view: UIView, style: UIBlurEffect.Style) {
         let tagBlur: Int = 217612512
         for sub in view.subviews {
             if sub.tag == tagBlur {
@@ -65,11 +65,11 @@ open class GUIUtility {
         view.insertSubview(blurView, at: 0)
     }
     
-    static func getBlurEffectView() -> UIView {
+    public static func getBlurEffectView() -> UIView {
         return self.getBlurEffectView(.light)
     }
     
-    static func getBlurEffectView(_ style: UIBlurEffect.Style) -> UIView {
+    public static func getBlurEffectView(_ style: UIBlurEffect.Style) -> UIView {
         let blur = UIBlurEffect(style: style)
         let blurEffectView = UIVisualEffectView(effect: blur)
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -95,7 +95,7 @@ open class GUIUtility {
         
     }*/
     
-    static func fitImageViewToImageContent(_ imageView: UIImageView) {
+    public static func fitImageViewToImageContent(_ imageView: UIImageView) {
         let ratio = (imageView.image?.size.height)! / (imageView.image?.size.width)!
         let frame = imageView.frame
         if ratio > 1 {
@@ -109,7 +109,7 @@ open class GUIUtility {
         }
     }
     
-    static func normalizeOrientation(_ image: UIImage) -> UIImage {
+    public static func normalizeOrientation(_ image: UIImage) -> UIImage {
         if image.imageOrientation == .up {
             return image
         }
@@ -125,7 +125,7 @@ open class GUIUtility {
         }
     }
     
-    static func createLocalUrl(forPngImageNamed name: String) -> URL? {
+    public static func createLocalUrl(forPngImageNamed name: String) -> URL? {
         let fileManager = FileManager.default
         let cacheDirectory = fileManager.urls(for: .cachesDirectory, in: .userDomainMask)[0]
         let url = cacheDirectory.appendingPathComponent("\(name).png")
@@ -143,7 +143,7 @@ open class GUIUtility {
         return url
     }
     
-    static func createGradientLayoutOf(size: CGSize) -> CAGradientLayer {
+    public static func createGradientLayoutOf(size: CGSize) -> CAGradientLayer {
         let gradient = CAGradientLayer()
         gradient.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
         gradient.colors = [UIColor.cyan.cgColor, UIColor.magenta.cgColor, UIColor.yellow.cgColor, UIColor.black.cgColor]
