@@ -17,6 +17,7 @@ let package = Package(
     dependencies: [
         // Dependencies declare other packages that this package depends on.
         .package(name: "Realm", url: "https://github.com/realm/realm-cocoa", from: "10.5.0"),
+        .package(name: "ObjectMapper", url: "https://github.com/tristanhimmelman/ObjectMapper.git", from: "4.2.0"),
         .package(name: "SDWebImage", url: "https://github.com/SDWebImage/SDWebImage", from: "5.10.2"),
     ],
     targets: [
@@ -24,7 +25,10 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "BrandiUtility",
-            dependencies: [.product(name: "RealmSwift", package: "Realm"), "SDWebImage"],
+            dependencies: [
+                .product(name: "RealmSwift", package: "Realm"),
+                "SDWebImage",
+                "ObjectMapper"],
             path: "Sources"),
         .testTarget(
             name: "BrandiUtilityTests",
