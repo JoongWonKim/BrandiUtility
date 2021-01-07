@@ -18,7 +18,7 @@ public enum SectionSupplement {
     case header
     case footer
     
-    init?(rawValue: String) {
+    public init?(rawValue: String) {
         switch rawValue {
         case UICollectionView.elementKindSectionHeader: self = .header
         case UICollectionView.elementKindSectionFooter: self = .footer
