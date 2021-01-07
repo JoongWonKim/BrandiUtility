@@ -13,6 +13,8 @@ open class BrandiIntTransform: TransformType {
     public typealias Object = Int
     public typealias JSON = Int
     
+    public init() {}
+    
     public func transformToJSON(_ value: Object?) -> JSON? {
         if let value = value {
             return value
@@ -33,6 +35,8 @@ open class BrandiIntTransform: TransformType {
 open class BrandiStringTransform: TransformType {
     public typealias Object = String
     public typealias JSON = String
+    
+    public init() {}
     
     public func transformToJSON(_ value: Object?) -> JSON? {
         if let value = value {
@@ -56,6 +60,8 @@ open class BrandiStringArrayTransform: TransformType {
     public typealias Object = [String]
     public typealias JSON = [String]
     
+    public init() {}
+    
     public func transformToJSON(_ value: Object?) -> JSON? {
         if let value = value {
             return value
@@ -78,6 +84,8 @@ open class BrandiStringEnumTransform<T: RawRepresentable>: TransformType {
     public typealias Object = T
     public typealias JSON = T.RawValue
     
+    public init() {}
+    
     public func transformToJSON(_ value: Object?) -> T.RawValue? {
         if let value = value {
             return value.rawValue
@@ -98,6 +106,8 @@ open class BrandiStringEnumTransform<T: RawRepresentable>: TransformType {
 open class BrandiIntEnumTransform<T: RawRepresentable>: TransformType {
     public typealias Object = T
     public typealias JSON = T.RawValue
+    
+    public init() {}
     
     public func transformToJSON(_ value: Object?) -> T.RawValue? {
         if let value = value {
@@ -121,6 +131,8 @@ open class BrandiDateTransform: TransformType {
     public typealias JSON = String
     
     static let reusableDateFormatter = DateFormatter(withFormat: "yyyy-MM-dd", locale: "en_US_POSIX")
+    
+    public init() {}
     
     public func transformToJSON(_ value: Object?) -> JSON? {
         if let value = value {
