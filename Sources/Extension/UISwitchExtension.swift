@@ -6,6 +6,7 @@
 //  Copyright © 2021 Brandi. All rights reserved.
 //
 
+#if !os(watchOS)
 import UIKit
 
 public extension UISwitch {
@@ -17,3 +18,4 @@ public extension UISwitch {
         transform = CGAffineTransform(scaleX: widthRatio, y: heightRatio)
     }
 }
+#endif

@@ -6,6 +6,7 @@
 //  Copyright © 2016년 Brandi. All rights reserved.
 //
 
+#if !os(watchOS)
 import Foundation
 import UIKit
 
@@ -28,3 +29,4 @@ public extension UIWindow {
         }
     }
 }
+#endif

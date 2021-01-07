@@ -5,6 +5,8 @@
 //  Created by Ryan Lee on 24/01/2019.
 //  Copyright © 2019 Brandi. All rights reserved.
 //
+
+#if !os(watchOS)
 import Foundation
 import UIKit
 
@@ -83,3 +85,4 @@ public extension UILabel {
                       height: size.height + topInset + bottomInset)
     }
 }
+#endif

@@ -6,6 +6,7 @@
 //  Copyright © 2020 Brandi. All rights reserved.
 //
 
+#if !os(watchOS)
 import UIKit
 
 public extension UISearchBar {
@@ -44,3 +45,4 @@ public extension UISearchBar {
     }
     
 }
+#endif

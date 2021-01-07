@@ -6,6 +6,7 @@
 //  Copyright © 2016년 Brandi. All rights reserved.
 //
 
+#if !os(watchOS)
 import Foundation
 import UIKit
 
@@ -76,3 +77,4 @@ open class CalculationUtility {
         return width
     }
 }
+#endif

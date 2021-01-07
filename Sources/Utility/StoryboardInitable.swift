@@ -6,6 +6,7 @@
 //  Copyright © 2020 Brandi. All rights reserved.
 //
 
+#if !os(watchOS)
 import UIKit
 
 public protocol StoryboardInitable {
@@ -22,3 +23,4 @@ public extension StoryboardInitable where Self: UIViewController {
 }
 
 extension UIViewController: StoryboardInitable {}
+#endif

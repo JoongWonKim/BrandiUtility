@@ -6,6 +6,7 @@
 //  Copyright © 2020 Brandi. All rights reserved.
 //
 
+#if !os(watchOS)
 import UIKit
 
 public protocol CellRegistrable {
@@ -71,3 +72,4 @@ extension UITableView: CellRegistrable {
         register(nib, forCellReuseIdentifier: String(describing: cellClass))
     }
 }
+#endif

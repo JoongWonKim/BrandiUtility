@@ -6,6 +6,7 @@
 //  Copyright © 2017년 Brandi. All rights reserved.
 //
 
+#if !os(watchOS)
 import UIKit
 
 public extension UITextField {
@@ -57,3 +58,4 @@ public extension UITextField {
         self.clipsToBounds = true
     }
 }
+#endif

@@ -6,11 +6,9 @@
 //  Copyright © 2016년 Brandi. All rights reserved.
 //
 
+#if !os(watchOS)
 import Foundation
-import UIKit
-//#if !os(watchOS)
-//import WebKit
-//#endif
+import WebKit
 
 public enum LocaleType: String {
     case eng = "en"
@@ -704,7 +702,7 @@ open class SystemUtility {
     }*/
     
 //    private static var globalWKWebView: WKWebView?
-//    
+//
 //    public static func getGlobalWKWebView(_ frame: CGRect) -> WKWebView {
 //        self.globalWKWebView?.removeFromSuperview()
 //        if self.globalWKWebView == nil {
@@ -717,11 +715,11 @@ open class SystemUtility {
 //        self.globalWKWebView?.layoutIfNeeded()
 //        return self.globalWKWebView!
 //    }
-//    
+//
 //    public static func setGlobalWKWebViewReleased() {
 //        self.globalWKWebView = nil
 //    }
-//    
+//
 //    public static func isGlobalWKWebViewNil() -> Bool {
 //        return (self.globalWKWebView == nil) ? true : false
 //    }
@@ -779,3 +777,4 @@ open class SystemUtility {
 //        }
 //    }
 }
+#endif

@@ -6,6 +6,7 @@
 //  Copyright © 2020 Brandi. All rights reserved.
 //
 
+#if !os(watchOS)
 import UIKit
 
 public extension UIViewController {
@@ -14,3 +15,4 @@ public extension UIViewController {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
     }
 }
+#endif

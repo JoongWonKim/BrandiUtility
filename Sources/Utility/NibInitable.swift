@@ -6,6 +6,7 @@
 //  Copyright © 2020 Brandi. All rights reserved.
 //
 
+#if !os(watchOS)
 import UIKit
 
 public protocol NibInitable {
@@ -29,3 +30,4 @@ public extension NibInitable where Self: UIViewController {
 
 extension UIView: NibInitable {}
 extension UIViewController: NibInitable {}
+#endif

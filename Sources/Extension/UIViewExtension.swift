@@ -6,6 +6,7 @@
 //  Copyright © 2020 Brandi. All rights reserved.
 //
 
+#if !os(watchOS)
 import UIKit
 
 public extension UIView {
@@ -210,3 +211,4 @@ public extension UIView {
 public struct AnchoredConstraints {
     public var top, leading, bottom, trailing, width, height: NSLayoutConstraint?
 }
+#endif

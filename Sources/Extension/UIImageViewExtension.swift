@@ -6,6 +6,7 @@
 //  Copyright © 2016년 Brandi. All rights reserved.
 //
 
+#if !os(watchOS)
 import Foundation
 import SDWebImage
 
@@ -42,3 +43,4 @@ public extension UIImageView {
         }
     }
 }
+#endif

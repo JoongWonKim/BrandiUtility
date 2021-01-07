@@ -6,6 +6,7 @@
 //  Copyright © 2020 Brandi. All rights reserved.
 //
 
+#if !os(watchOS)
 import Foundation
 import UIKit
 
@@ -15,3 +16,4 @@ public extension UIDevice {
         return bottom > 0
     }
 }
+#endif
