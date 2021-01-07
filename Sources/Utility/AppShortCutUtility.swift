@@ -21,6 +21,8 @@ open class AppShortCutUtility {
     
     private static var shortCutAction: AppShortCutType = .none
     
+    public init() {}
+    
     // MARK: UIApplicationShortcut Related Functions
     public static func setAppShortCut(_ type: AppShortCutType) {
         self.shortCutAction = type

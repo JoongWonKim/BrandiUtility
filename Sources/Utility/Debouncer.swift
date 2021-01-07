@@ -11,7 +11,9 @@ import Foundation
 open class Debouncer {
     
     private var currentWorkItem: DispatchWorkItem?
-
+    
+    public init() {}
+    
     public func debounce(delay: DispatchTimeInterval, queue: DispatchQueue = .main, action: @escaping (() -> Void)) -> () -> Void {
         return {  [weak self] in
             guard let self = self else { return }

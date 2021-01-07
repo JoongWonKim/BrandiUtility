@@ -9,6 +9,9 @@
 import Foundation
 
 open class GlobalExceptionHandler {
+    
+    public init() {}
+    
     // MARK: Uncaught Exception Handler
     public static func handleException(_ exception: NSException) {
         let stackArray = exception.callStackReturnAddresses

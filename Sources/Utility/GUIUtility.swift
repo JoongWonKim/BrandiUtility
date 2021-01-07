@@ -11,6 +11,8 @@ import UIKit
 
 open class GUIUtility {
     
+    public init() {}
+    
     /*
     static func imageWithPrimaryColor(_ size: CGSize) -> UIImage {
         let image = self.imageWithColor(ResourceDataStore.colors().COLOR_BRANDI_PRIMARY_TRANSPARENT, size: size)

@@ -12,6 +12,8 @@ import UIKit
 open class CalculationUtility {
     public static var standardWidth: CGFloat = 1200
     
+    public init() {}
+    
     public static func convertPointIntoDecimalStringFormat(_ point: Int) -> String {
         let converter = NumberFormatter()
         converter.numberStyle = NumberFormatter.Style.decimal
