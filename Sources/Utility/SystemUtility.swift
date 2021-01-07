@@ -8,9 +8,9 @@
 
 import Foundation
 import UIKit
-#if !os(watchOS)
-import WebKit
-#endif
+//#if !os(watchOS)
+//import WebKit
+//#endif
 
 public enum LocaleType: String {
     case eng = "en"
@@ -703,31 +703,28 @@ open class SystemUtility {
         }
     }*/
     
-//    #if !os(watchOS)
-    /*
-    private static var globalWKWebView: WKWebView?
-    
-    public static func getGlobalWKWebView(_ frame: CGRect) -> WKWebView {
-        self.globalWKWebView?.removeFromSuperview()
-        if self.globalWKWebView == nil {
-            let config = WKWebViewConfiguration()
-            config.allowsInlineMediaPlayback = true
-            config.dataDetectorTypes = []
-            self.globalWKWebView = WKWebView(frame: frame, configuration: config)
-        }
-        self.globalWKWebView?.frame = frame
-        self.globalWKWebView?.layoutIfNeeded()
-        return self.globalWKWebView!
-    }
-    
-    public static func setGlobalWKWebViewReleased() {
-        self.globalWKWebView = nil
-    }
-    
-    public static func isGlobalWKWebViewNil() -> Bool {
-        return (self.globalWKWebView == nil) ? true : false
-    }*/
-//    #endif
+//    private static var globalWKWebView: WKWebView?
+//    
+//    public static func getGlobalWKWebView(_ frame: CGRect) -> WKWebView {
+//        self.globalWKWebView?.removeFromSuperview()
+//        if self.globalWKWebView == nil {
+//            let config = WKWebViewConfiguration()
+//            config.allowsInlineMediaPlayback = true
+//            config.dataDetectorTypes = []
+//            self.globalWKWebView = WKWebView(frame: frame, configuration: config)
+//        }
+//        self.globalWKWebView?.frame = frame
+//        self.globalWKWebView?.layoutIfNeeded()
+//        return self.globalWKWebView!
+//    }
+//    
+//    public static func setGlobalWKWebViewReleased() {
+//        self.globalWKWebView = nil
+//    }
+//    
+//    public static func isGlobalWKWebViewNil() -> Bool {
+//        return (self.globalWKWebView == nil) ? true : false
+//    }
     
     public static func saveV2Popup(_ needed: Bool, title: String, content: String) {
         self.v2PopupNeeded = needed
