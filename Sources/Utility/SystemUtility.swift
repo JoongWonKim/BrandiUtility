@@ -7,7 +7,9 @@
 //
 
 import Foundation
+#if !os(watchOS)
 import WebKit
+#endif
 
 public enum LocaleType: String {
     case eng = "en"
@@ -700,6 +702,7 @@ open class SystemUtility {
         }
     }*/
     
+    #if !os(watchOS)
     private static var globalWKWebView: WKWebView?
     
     public static func getGlobalWKWebView(_ frame: CGRect) -> WKWebView {
@@ -722,6 +725,7 @@ open class SystemUtility {
     public static func isGlobalWKWebViewNil() -> Bool {
         return (self.globalWKWebView == nil) ? true : false
     }
+    #endif
     
     public static func saveV2Popup(_ needed: Bool, title: String, content: String) {
         self.v2PopupNeeded = needed
