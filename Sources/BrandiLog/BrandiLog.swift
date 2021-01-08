@@ -10,9 +10,6 @@ import Foundation
 
 open class Logger {
     
-    /// 출력되는 접두사 이름
-    private static var logName: String = ""
-    
     /// 디버그모드 선언. 로그를 출력하고자 하는 경우 true, 로그를 출력하지 않고자 하는 경우 false로 지정
     private static var isDebugMode: Bool = true
     
@@ -33,21 +30,17 @@ open class Logger {
         
         var name: String {
             switch self {
-            case .verbose: return "###_\(Logger.logName)_LOG_###"
-            case .info: return "###_\(Logger.logName)_INFO_###"
-            case .warning: return "###_\(Logger.logName)_WARNING_###"
-            case .error: return "###_\(Logger.logName)_ERROR_###"
-            case .raw: return "###_\(Logger.logName)_RAW_OBJECT_###"
+            case .verbose: return "###_\(Bundle.main.displayName)_LOG_###"
+            case .info: return "###_\(Bundle.main.displayName)_INFO_###"
+            case .warning: return "###_\(Bundle.main.displayName)_WARNING_###"
+            case .error: return "###_\(Bundle.main.displayName)_ERROR_###"
+            case .raw: return "###_\(Bundle.main.displayName)_RAW_OBJECT_###"
             }
         }
     }
     
     public static let stringLogEmptySpace = " "
     public static let stringLogTagMessage = "MESSAGE:"
-    
-    public static func setLogName(_ logName: String) {
-        self.logName = logName
-    }
     
     public static func setDebugMode(_ isDebugMode: Bool) {
         self.isDebugMode = isDebugMode

@@ -94,12 +94,6 @@ public extension UIView {
         self.layer.borderColor = UIColor.clear.cgColor
     }
     
-    /*
-    func setCornerRadiusOfDefault() {
-        let value = ResourceDataStore.policies().POLICY_GUI_VALUE_CORNER_RADIUS
-        self.setCornerRadius(value)
-    }*/
-    
     func setCornerRadius(_ radius: CGFloat) {
         self.setCornerRadius(radius, borderWidth: 0.0, borderColor: nil)
     }

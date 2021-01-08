@@ -24,18 +24,6 @@ public extension UITextField {
         self.rightViewMode = UITextField.ViewMode.always
     }
     
-    /*
-    func addIndentOfDefault() {
-        self.addIndentIntoLeft(ResourceDataStore.dimensions().DIMENSION_INDENT_TEXTFIELD_DEFUALT)
-    }
-    
-    func setToDefaultView() {
-        self.borderStyle = .none
-        self.layer.borderWidth = 0.5
-        self.layer.cornerRadius = 8
-        self.layer.borderColor = ResourceDataStore.colors().COLOR_BRANDI_LIGHTGRAY.cgColor
-    }*/
-    
     func setToDefaultView(color: CGColor) {
         self.borderStyle = .none
         self.layer.borderWidth = 0.5

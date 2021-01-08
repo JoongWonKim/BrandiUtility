@@ -35,14 +35,8 @@ public extension UISearchBar {
         searchField.textColor = UIColor.black
     }
     
-    /*
-    func setSearchBarClearIcon() {
-        self.setImage(Asset.Assets.icoTextFieldDelete.image.addImagePadding(x: 5, y: 0), for: .clear, state: .normal)
-    }*/
-    
     func setAttributesCancelButtonTitle(_ attributes: [NSAttributedString.Key: Any]) {
         UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).setTitleTextAttributes(attributes, for: .normal)
     }
-    
 }
 #endif

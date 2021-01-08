@@ -14,12 +14,6 @@ open class GUIUtility {
     
     public init() {}
     
-    /*
-    static func imageWithPrimaryColor(_ size: CGSize) -> UIImage {
-        let image = self.imageWithColor(ResourceDataStore.colors().COLOR_BRANDI_PRIMARY_TRANSPARENT, size: size)
-        return image
-    }*/
-    
     public static func imageWithColor(_ color: UIColor, size: CGSize) -> UIImage {
         let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
@@ -78,25 +72,6 @@ open class GUIUtility {
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         return blurEffectView
     }
-    
-    /*
-    static func makeTagTopArrowImage(_ orgFrame: CGRect) -> (finalSize: CGSize, tagImage: UIImage) {
-        let WIDTH_ARROW: CGFloat = 11
-        let HEIGHT_ARROW: CGFloat = 8
-        let arrowImage = Asset.Assets.eTagBubbleBoxBottom.image
-        let backgroundImage = self.imageWithColorRounded(UIColor.black, size: orgFrame.size)
-        let finalSize = CGSize(width: orgFrame.size.width, height: orgFrame.size.height + HEIGHT_ARROW)
-        UIGraphicsBeginImageContext(finalSize)
-        backgroundImage.draw(in: CGRect(x: 0, y: HEIGHT_ARROW, width: finalSize.width, height: finalSize.height - HEIGHT_ARROW))
-        arrowImage.draw(in: CGRect(x: (finalSize.width - WIDTH_ARROW) / 2, y: 0, width: WIDTH_ARROW, height: HEIGHT_ARROW))
-        if let newImage = UIGraphicsGetImageFromCurrentImageContext() {
-            UIGraphicsEndImageContext()
-            return (finalSize: finalSize, tagImage: newImage)
-        } else {
-            return (finalSize: finalSize, tagImage: backgroundImage)
-        }
-        
-    }*/
     
     public static func fitImageViewToImageContent(_ imageView: UIImageView) {
         let ratio = (imageView.image?.size.height)! / (imageView.image?.size.width)!
