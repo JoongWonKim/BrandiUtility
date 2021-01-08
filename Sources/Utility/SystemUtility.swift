@@ -35,9 +35,6 @@ open class SystemUtility {
     private static var refreshSet: [NSValue: Bool] = [ : ]
     private static var loginRefreshSet: [NSValue: Bool] = [ : ]
     
-    // MARK: Constants
-    public static let DURATION_ANIMATION: TimeInterval = 0.3
-    
     // MARK: System Status Functions
     public static func getBuildVersion() -> String {
         var ver: String = "0"
@@ -610,7 +607,7 @@ open class SystemUtility {
 //            )
 //        }
 //    }
-//    
+//
 //    public static func hideBlurryViewFromTopWindow(_ completionHandler: ((Bool) -> Void)?) {
 //        if let blurry = self.viewBlurry {
 //            UIView.animate(withDuration: self.DURATION_ANIMATION, animations:
@@ -624,7 +621,7 @@ open class SystemUtility {
 //            )
 //        }
 //    }
-//    
+//
     /*
     static func showGlobalImagePopup(image: ImagePopup) {
         // distinguish logic
