@@ -13,6 +13,17 @@ public extension Bundle {
         self.infoDictionary?["CFBundleShortVersionString"] as? String
     }
     
+    var displayName: String {
+        guard let dictionary = Bundle.main.infoDictionary else {
+            return ""
+        }
+        if let version : String = dictionary["CFBundleName"] as? String {
+            return version
+        } else {
+            return ""
+        }
+    }
+    
     static var mainAppVersion: String? {
         Bundle.main.appVersion
     }
@@ -26,7 +37,7 @@ public extension Bundle {
             let results = json["results"] as? [[String: Any]],
             results.count > 0,
             let appStoreVersion = results.first?["version"] as? String
-            else { return false }
+        else { return false }
         if !(version == appStoreVersion) { return true }
         else { return false }
     }

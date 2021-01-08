@@ -39,28 +39,24 @@ open class SystemUtility {
     public static let DURATION_ANIMATION: TimeInterval = 0.3
     
     // MARK: System Status Functions
-    public static func getBrandiBuildVersion() -> String {
+    public static func getBuildVersion() -> String {
         var ver: String = "0"
         if let version = Bundle.main.infoDictionary?[String(kCFBundleVersionKey)] as? String {
             ver = version
-            Logger.infoLog("Brandi iOS version is: \(ver)")
-//            BRFirebaseCrashlytics.writeCrashLog(string: "\(#function):: Brandi iOS version is: \(ver)")
+            Logger.infoLog("\(Bundle.main.displayName) iOS version is: \(ver)")
         } else {
             Logger.infoLog("An Error Occurered within getting app version process")
-//            BRFirebaseCrashlytics.writeCrashLog(string: "\(#function):: An Error Occurered within getting app version process")
         }
         return ver
     }
     
-    public static func getBrandiVersionCode() -> String {
+    public static func getVersionCode() -> String {
         var ver: String = "0.0.0"
         if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
             ver = version
-            Logger.infoLog("Brandi iOS version is: \(ver)")
-//            BRFirebaseCrashlytics.writeCrashLog(string: "\(#function):: Brandi iOS version is: \(ver)")
+            Logger.infoLog("\(Bundle.main.displayName) iOS version is: \(ver)")
         } else {
             Logger.infoLog("An Error Occurered within getting app version process")
-//            BRFirebaseCrashlytics.writeCrashLog(string: "\(#function):: An Error Occurered within getting app version process")
         }
         return ver
     }
@@ -588,47 +584,47 @@ open class SystemUtility {
         }
     }*/
     
-    // MARK: Blurry Fullscreen Page Functions
-    private static var viewBlurry: UIView?
-    public static func showBlurryViewOnTopWindow() {
-        if let rootWindow = UIApplication.shared.keyWindow {
-            if self.viewBlurry == nil {
-                self.viewBlurry = GUIUtility.getBlurEffectView()
-            }
-            self.viewBlurry?.alpha = 0.0
-            self.viewBlurry?.isHidden = true
-            if rootWindow.subviews.contains(self.viewBlurry!) {
-                rootWindow.bringSubviewToFront(self.viewBlurry!)
-            } else {
-                rootWindow.addSubview(self.viewBlurry!)
-            }
-            let frameLoading = CGRect(x: 0, y: 0, width: (rootWindow.frame.size.width), height: (rootWindow.frame.size.height))
-            self.viewBlurry?.frame = frameLoading
-            //            self.loadingView?.viewBlurryBackground.frame = frameLoading
-            self.viewBlurry?.isHidden = false
-            self.viewBlurry?.isUserInteractionEnabled = true
-            UIView.animate(withDuration: self.DURATION_ANIMATION, animations:
-                {
-                    self.viewBlurry?.alpha = 1.0
-                }
-            )
-        }
-    }
-    
-    public static func hideBlurryViewFromTopWindow(_ completionHandler: ((Bool) -> Void)?) {
-        if let blurry = self.viewBlurry {
-            UIView.animate(withDuration: self.DURATION_ANIMATION, animations:
-                {
-                    blurry.alpha = 0.0
-                },
-                                       completion:
-                { complete in
-                    completionHandler?(complete)
-                }
-            )
-        }
-    }
-    
+//    // MARK: Blurry Fullscreen Page Functions
+//    private static var viewBlurry: UIView?
+//    public static func showBlurryViewOnTopWindow() {
+//        if let rootWindow = UIApplication.shared.keyWindow {
+//            if self.viewBlurry == nil {
+//                self.viewBlurry = GUIUtility.getBlurEffectView()
+//            }
+//            self.viewBlurry?.alpha = 0.0
+//            self.viewBlurry?.isHidden = true
+//            if rootWindow.subviews.contains(self.viewBlurry!) {
+//                rootWindow.bringSubviewToFront(self.viewBlurry!)
+//            } else {
+//                rootWindow.addSubview(self.viewBlurry!)
+//            }
+//            let frameLoading = CGRect(x: 0, y: 0, width: (rootWindow.frame.size.width), height: (rootWindow.frame.size.height))
+//            self.viewBlurry?.frame = frameLoading
+//            //            self.loadingView?.viewBlurryBackground.frame = frameLoading
+//            self.viewBlurry?.isHidden = false
+//            self.viewBlurry?.isUserInteractionEnabled = true
+//            UIView.animate(withDuration: self.DURATION_ANIMATION, animations:
+//                {
+//                    self.viewBlurry?.alpha = 1.0
+//                }
+//            )
+//        }
+//    }
+//    
+//    public static func hideBlurryViewFromTopWindow(_ completionHandler: ((Bool) -> Void)?) {
+//        if let blurry = self.viewBlurry {
+//            UIView.animate(withDuration: self.DURATION_ANIMATION, animations:
+//                {
+//                    blurry.alpha = 0.0
+//                },
+//                                       completion:
+//                { complete in
+//                    completionHandler?(complete)
+//                }
+//            )
+//        }
+//    }
+//    
     /*
     static func showGlobalImagePopup(image: ImagePopup) {
         // distinguish logic
@@ -701,60 +697,60 @@ open class SystemUtility {
         }
     }*/
     
-//    private static var globalWKWebView: WKWebView?
-//
-//    public static func getGlobalWKWebView(_ frame: CGRect) -> WKWebView {
-//        self.globalWKWebView?.removeFromSuperview()
-//        if self.globalWKWebView == nil {
-//            let config = WKWebViewConfiguration()
-//            config.allowsInlineMediaPlayback = true
-//            config.dataDetectorTypes = []
-//            self.globalWKWebView = WKWebView(frame: frame, configuration: config)
-//        }
-//        self.globalWKWebView?.frame = frame
-//        self.globalWKWebView?.layoutIfNeeded()
-//        return self.globalWKWebView!
-//    }
-//
-//    public static func setGlobalWKWebViewReleased() {
+    private static var globalWKWebView: WKWebView?
+
+    public static func getGlobalWKWebView(_ frame: CGRect) -> WKWebView {
+        self.globalWKWebView?.removeFromSuperview()
+        if self.globalWKWebView == nil {
+            let config = WKWebViewConfiguration()
+            config.allowsInlineMediaPlayback = true
+            config.dataDetectorTypes = []
+            self.globalWKWebView = WKWebView(frame: frame, configuration: config)
+        }
+        self.globalWKWebView?.frame = frame
+        self.globalWKWebView?.layoutIfNeeded()
+        return self.globalWKWebView!
+    }
+
+    public static func setGlobalWKWebViewReleased() {
 //        self.globalWKWebView = nil
+    }
+
+    public static func isGlobalWKWebViewNil() -> Bool {
+        return (self.globalWKWebView == nil) ? true : false
+    }
+    
+//    public static func saveV2Popup(_ needed: Bool, title: String, content: String) {
+//        self.v2PopupNeeded = needed
+//        self.v2PopupTitle = title
+//        self.v2PopupContent = content
 //    }
 //
-//    public static func isGlobalWKWebViewNil() -> Bool {
-//        return (self.globalWKWebView == nil) ? true : false
+//    private static var v2PopupNeeded = false
+//    private static var v2PopupTitle: String?
+//    private static var v2PopupContent: String?
+//    public static func getV2Popup() -> (title: String, content: String)? {
+//        if self.v2PopupNeeded && self.v2PopupTitle != nil && self.v2PopupContent != nil {
+//            self.v2PopupNeeded = false
+//            return (title: self.v2PopupTitle!, content: self.v2PopupContent!)
+//        } else {
+//            return nil
+//        }
 //    }
-    
-    public static func saveV2Popup(_ needed: Bool, title: String, content: String) {
-        self.v2PopupNeeded = needed
-        self.v2PopupTitle = title
-        self.v2PopupContent = content
-    }
-    
-    private static var v2PopupNeeded = false
-    private static var v2PopupTitle: String?
-    private static var v2PopupContent: String?
-    public static func getV2Popup() -> (title: String, content: String)? {
-        if self.v2PopupNeeded && self.v2PopupTitle != nil && self.v2PopupContent != nil {
-            self.v2PopupNeeded = false
-            return (title: self.v2PopupTitle!, content: self.v2PopupContent!)
-        } else {
-            return nil
-        }
-    }
-    
-    private static var alertPushPopupNeeded = false
-    public static func getAlertPushPopup() -> Bool {
-        if self.alertPushPopupNeeded {
-//            self.alertPushPopupNeeded = false
-            return true
-        } else {
-            return false
-        }
-    }
-    
-    public static func setAlertPushPopup(_ alertPushPopupNeeded: Bool) {
-        self.alertPushPopupNeeded = alertPushPopupNeeded
-    }
+//
+//    private static var alertPushPopupNeeded = false
+//    public static func getAlertPushPopup() -> Bool {
+//        if self.alertPushPopupNeeded {
+////            self.alertPushPopupNeeded = false
+//            return true
+//        } else {
+//            return false
+//        }
+//    }
+//
+//    public static func setAlertPushPopup(_ alertPushPopupNeeded: Bool) {
+//        self.alertPushPopupNeeded = alertPushPopupNeeded
+//    }
     
 //    private static var hasCompletedPhraseData: Bool = false
 //    private static var signUpCompletedPhrase: CompletedPhraseData?
